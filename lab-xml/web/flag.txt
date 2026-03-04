@@ -1,0 +1,3 @@
+FLAG{xxe_file_read_success}
+Selamat! Kamu berhasil membaca file melalui XXE injection.
+Teknik ini digunakan untuk Local File Disclosure (LFD) pada aplikasi nyata.
