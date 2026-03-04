@@ -18,7 +18,6 @@
 
 | Lab | Topik | Port | Tingkat | Status |
 |-----|-------|------|---------|--------|
-| [SQL Injection](./lab-sqli-single/) | SQL Injection — Basic, Auth Bypass, Blind | `8080` | Easy–Hard | Tersedia |
 | [XML Injection](./lab-xml/) | XML Injection — Basic XML, XPath, XXE | `8081` | Easy–Hard | Tersedia |
 
 ---
@@ -43,12 +42,8 @@ Setiap lab berjalan secara independen dalam container terpisah. Keduanya dapat d
 
 ```bash
 # Clone repository
-git clone https://github.com/15K4R10T/IDN-CyberRange.git
+git clone https://github.com/15K4R10T/XMLInjection-Machine-CyberRange-IDN.git
 cd IDN-CyberRange
-
-# Jalankan Lab SQL Injection (port 8080)
-cd lab-sqli-single
-chmod +x run.sh && ./run.sh
 
 # Jalankan Lab XML Injection (port 8081)
 cd ../lab-xml
@@ -58,7 +53,6 @@ chmod +x run.sh && ./run.sh
 Akses via browser:
 
 ```
-http://<IP-VM>:8080    →  SQL Injection Lab
 http://<IP-VM>:8081    →  XML Injection Lab
 ```
 
@@ -69,21 +63,6 @@ http://<IP-VM>:8081    →  XML Injection Lab
 ```
 IDN-CyberRange/
 ├── README.md
-│
-├── lab-sqli-single/          SQL Injection Lab
-│   ├── Dockerfile
-│   ├── run.sh                Build & deploy (port 8080)
-│   ├── init.sql
-│   ├── entrypoint.sh
-│   ├── supervisord.conf
-│   ├── apache.conf
-│   └── web/
-│       ├── index.php         Dashboard
-│       ├── basic/            Modul 1 - Basic SQLi
-│       ├── auth/             Modul 2 - Auth Bypass
-│       ├── blind/            Modul 3 - Blind SQLi
-│       └── includes/
-│
 └── lab-xml/                  XML Injection Lab
     ├── Dockerfile
     ├── run.sh                Build & deploy (port 8081)
@@ -108,17 +87,15 @@ IDN-CyberRange/
 docker ps
 
 # Lihat log real-time
-docker logs -f lab-sqli
 docker logs -f lab-xml
 
 # Stop semua lab
-docker stop lab-sqli lab-xml
+docker stop lab-xml
 
 # Start ulang semua lab
-docker start lab-sqli lab-xml
+docker start lab-xml
 
 # Hapus dan rebuild dari awal
-docker rm -f lab-sqli && cd lab-sqli-single && ./run.sh
 docker rm -f lab-xml  && cd lab-xml          && ./run.sh
 ```
 
